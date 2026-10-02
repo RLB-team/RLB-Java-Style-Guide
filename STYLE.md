@@ -90,9 +90,7 @@ For example:
 ```
 final DcMotorEx[] encoderMotors = { frontLeft, frontRight, backLeft, backRight, indexer };
 ```
-As you can see, after `{` there is a space before the rest of the contents.
-
-All single 
+As you can see, after `{` there is a space before the rest of the contents, and a space before the closing bracket `}`.
 
 ___
 
