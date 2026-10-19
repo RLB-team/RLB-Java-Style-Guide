@@ -15,27 +15,9 @@ Code should use 3 spaces per tab indentation. The reasoning for this is quite si
 4 tabs pushes code more to the right of the screen, but 2 tabs makes statements stand out less and appear more cluttered.
 
 The solution to this is 3 spaces per tab.
-### How to Maintain Style
-When copy-pasting portions of external Java code, the examples will very likely use 4 space tabs.
-If you notice intermixing of these styles:
-* Manually correct the issue if the issue is small.
-* If the issue is large or across multiple files, go down to the bottom-right corner of the window.
 
-Click `3 spaces`.
-
-<img width="189" height="106" alt="Screenshot_2026-09-25_17-49-00" src="https://github.com/user-attachments/assets/d7e66cbe-f37b-4535-8730-6896e76e0482" />
-
-___
-
-Set `Tab size` and `Indent` to 3.
-
-<img width="807" height="468" alt="Screenshot_2026-09-25_17-50-39" src="https://github.com/user-attachments/assets/8bf59597-cd8d-4fa9-b661-1a61eb5e6b7f" />
-
-___
-
-Finally, click `Ok` to apply the changes.
-
-<img width="533" height="259" alt="Screenshot_2026-09-25_21-38-05" src="https://github.com/user-attachments/assets/2eb62a5b-8fad-4396-bcd0-0763720914ef" />
+While this might seem quite unusual and you might think this would lead to inconsistencies,
+Android Studio automatically corrects areas of code with different spaces per tab.
 
 ___
 
@@ -92,6 +74,10 @@ final DcMotorEx[] encoderMotors = { frontLeft, frontRight, backLeft, backRight, 
 ```
 As you can see, after `{` there is a space before the rest of the contents, and a space before the closing bracket `}`.
 
+The space cost is very little, and it looks decently cleaner compared to
+```
+final DcMotorEx[] encoderMotors = {frontLeft, frontRight, backLeft, backRight, indexer};
+```
 ___
 
 ## C3: Object oriented programming guidelines
