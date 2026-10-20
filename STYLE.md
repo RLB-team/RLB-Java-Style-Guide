@@ -29,7 +29,15 @@ if (i > 20) {
 ```
 There should be a space around `if ()` and one space before the opening bracket `() {`
 
-In Java _or any C family language_, you could do
+```
+if(sysVoltage < 10){ // <- Ugly!
+   exceptionTime += loopTime / 1000;
+}
+```
+
+.
+
+In Java or any C family language, you could do
 ```
 if (sysVoltage < 10) {
    exceptionTime += loopTime / 1000;
@@ -43,7 +51,7 @@ if (sysVoltage < 10)
 The bracket-less form only works if the statement has one line of code.
 
 Either of these is valid. The issue is that using bracket-less form creates inconsistency with the rest of the codebase.
-Because of this, only use the bracket-less form when there are **2 or more** statements next to each other.
+Because of this, only use the bracketless form when there are **3 or more** statements next to each other.
 
 For example:
 ```
@@ -66,6 +74,12 @@ for (final var motor : reverseMotors) {
    motor.setDirection(DcMotorEx.Direction.REVERSE);
 }
 ```
+
+### Usage of spacing in equations and math operations
+**There should always be spaces inbetween the operator and the number.**
+
+For example, `if ((5 + 5) / 25.5 > 6) {` looks a lot better than `if((5+5)/25.5>6){`
+
 ### Usage of spacing in single line bracketed constructs
 All items/contents within `{}` will be spaced out from the brackets.
 For example:
