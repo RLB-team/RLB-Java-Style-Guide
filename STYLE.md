@@ -6,15 +6,14 @@ Welcome! This documentation aims to provide guidance to produce both efficient a
 ## Chapters
 1. Indentation guidelines
 2. Brackets and spacing guidelines
-3. Object oriented programming guidelines
+3. Variable naming and declarations
+4. Object oriented programming guidelines
 
 ___
 
 ## C1: Indentation Guidelines
 Code should use 3 spaces per tab indentation. The reasoning for this is quite simple;
 4 tabs pushes code more to the right of the screen, but 2 tabs makes statements stand out less and appear more cluttered.
-
-The solution to this is 3 spaces per tab.
 
 While this might seem quite unusual and you might think this would lead to inconsistencies,
 Android Studio automatically corrects areas of code with different spaces per tab.
@@ -94,6 +93,49 @@ final DcMotorEx[] encoderMotors = {frontLeft, frontRight, backLeft, backRight, i
 ```
 ___
 
-## C3: Object oriented programming guidelines
+## C3: Variable naming and declarations
+### Immutability
+When declaring a variable, you should start out with it as `final`.
+As you shape the code over time and you develop the need to mutate it, you can drop the `final` in declaration.
+
+The easiest variables to make `final` are:
+* Hardware/Motor definitions  `final MotorEx frontLeft  = new MotorEx(hardwareMap, "frontLeft");`
+* Class initializations       `final var Outtake  = new Outtake(outtake);`
+* Objects in for-each loops   `for (final var module : modules)`
+
+### Type usage
+When making a simple variable that only holds a number or a string,
+you should declare it with the appropriate type keyword.
+
+While you could make
+```
+double aButton     = gamepad1.a ? 1.0 : 0.0;
+double bButton     = gamepad1.b ? 1.0 : 0.0;
+double xButton     = gamepad1.x ? 1.0 : 0.0;
+double leftTrigger = gamepad1.left_trigger / SHOOT_SPEED_DIVIDER;
+```
+Use the `var` keyword, you should always avoid `var` for primitive math and calculations
+where keeping the data type explicit prevents bugs.
+
+The `var` keyword should be saved for more complex objects, such as:
+* Most class declarations `final var Debug = new Debug(telemetry);`
+  _Note:_ `MotorEx` declarations cannot be `var`. You must instead use their respective type (MotorEx)
+* `hardwareMap` objects
+* Objects in forEach loops
+
+When using `var`, keep in mind that you cannot use it on uninitialized variable declarations.
+
+### Naming
+All variables should use _camelCase_ for naming.
+Do not use Hungarian notation (putting the variable type name's first letter as the first "word")
+
+When deciding what to name a variable, you should think about:
+* Compactness (should be no more than 3 words packed into the name)
+* Understand-ability (Abbreviations are particularly bad, for example _bg_ vs _background_, _intakeC_ vs _intakeCurrent_)
+* Clarity of measurement (naming `loopTime` `loopTimeMilliseconds` does make it more verbose, but makes it clearer later on when it is used.)
+
+All variables should be easy the understand for someone unfamiliar with the program's code.
+
+## C4: Object oriented programming guidelines
 WIP :)
 ___
