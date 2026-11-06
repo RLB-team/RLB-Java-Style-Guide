@@ -109,12 +109,11 @@ you should declare it with the appropriate type keyword.
 
 While you could make
 ```
-double aButton     = gamepad1.a ? 1.0 : 0.0;
-double bButton     = gamepad1.b ? 1.0 : 0.0;
-double xButton     = gamepad1.x ? 1.0 : 0.0;
-double leftTrigger = gamepad1.left_trigger / SHOOT_SPEED_DIVIDER;
+double driveX  = Range.clip(gamepad1.left_stick_x,  -motorMax, motorMax) * DRIVE_X_BIAS;
+double driveY  = Range.clip(gamepad1.left_stick_y,  -motorMax, motorMax) * DRIVE_Y_BIAS;
+double driveRx = Range.clip(gamepad1.right_stick_x, -motorMax, motorMax) * DRIVE_TURN_BIAS;
 ```
-Use the `var` keyword, you should always avoid `var` for primitive math and calculations
+use the `var` keyword, you should always avoid `var` for primitive math and calculations
 where keeping the data type explicit prevents bugs.
 
 The `var` keyword should be saved for more complex objects, such as:
@@ -137,5 +136,21 @@ When deciding what to name a variable, you should think about:
 All variables should be easy the understand for someone unfamiliar with the program's code.
 
 ## C4: Object oriented programming guidelines
+### Motor and Servo hardwareMap declarations
+All `hardwareMap` declarations should happen in the _Main_ class to avoid repetition.
+To hand off control of a motor to a class, pass it in through the class's init function.
+```
+final var Transfer = new Transfer(intaker, indexer); // Motors being passed into init function
+```
+Transfer class init function:
+```
+private final MotorEx intaker, indexer;
+
+public Transfer(final MotorEx intaker, final MotorEx indexer)
+{
+   this.intaker = intaker;
+   this.indexer = indexer;
+}
+```
 WIP :)
 ___
