@@ -12,17 +12,53 @@ Welcome! This documentation aims to provide guidance to produce both efficient a
 ___
 
 ## C1: Indentation Guidelines
+### Tabs
 Code should use 3 spaces per tab indentation. The reasoning for this is quite simple;
 4 tabs pushes code more to the right of the screen, but 2 tabs makes statements stand out less and appear more cluttered.
 
 While this might seem quite unusual and you might think this would lead to inconsistencies,
 Android Studio automatically corrects areas of code with different spaces per tab.
 
+### Horizontal alignment
+Horizontal Alignment is recommended under a set of conditions:
+* Should only be used if there are 3 or more lines next to eachother
+* Alignment should never continue between variables if there is a line break between them
+* Alignment should happen before the `=`, not after. This helps reduce noise.
+
+Visualization:
+```
+boolean RUN_TELEMETRY         = true;
+boolean RUN_TELEMETRY_LOGGER  = true;
+boolean ALLOW_REVERSE_SHOOTER = false;
+// Good
+```
+
+```
+boolean RUN_TELEMETRY         = true;
+boolean RUN_TELEMETRY_LOGGER  = true;
+// Should have 3 or more for aligning
+```
+
+```
+boolean RUN_TELEMETRY =         true;
+boolean RUN_TELEMETRY_LOGGER =  true;
+boolean ALLOW_REVERSE_SHOOTER = false;
+// You should align the = too!
+```
+
+```
+final var Outtake  = new Outtake(outtake, transferGate);
+final var Debug    = new Debug(telemetry);
+
+final var timer    = new ElapsedTime();
+// Not ideal if there's a gap between them
+```
+
 ___
 
 ## C2: Brackets and spacing guidelines
 ### Statements and loops
-All if statements will use spacing as in this example:
+All if statements should use spacing as in this example:
 ```
 if (i > 20) {
 ```
@@ -49,29 +85,15 @@ if (sysVoltage < 10)
 ```
 The bracket-less form only works if the statement has one line of code.
 
-Either of these is valid. The issue is that using bracket-less form creates inconsistency with the rest of the codebase.
-Because of this, only use the bracketless form when there are **3 or more** statements next to each other.
+The issue with this is that you lose the clarity and separation when you remove the brackets.
+Because of this, only use the bracket-less form if you have the statement on one line.
 
-For example:
+Furthermore, the only allowed single-line bracket-less statements should be ones returning a value from a function.
+
 ```
-for (final var motor : brakeMotors)
-   motor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
-for (final var motor : encoderMotors)
-   motor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
-for (final var motor : reverseMotors)
-   motor.setDirection(DcMotorEx.Direction.REVERSE);
-```
-saves a significant amount of space compared to
-```
-for (final var motor : brakeMotors) {
-   motor.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
-}
-for (final var motor : encoderMotors) {
-   motor.setMode(DcMotorEx.RunMode.RUN_USING_ENCODER);
-}
-for (final var motor : reverseMotors) {
-   motor.setDirection(DcMotorEx.Direction.REVERSE);
-}
+if (STOP_FUNCTION) return;
+
+// Good and legal
 ```
 
 ### Usage of spacing in equations and math operations
