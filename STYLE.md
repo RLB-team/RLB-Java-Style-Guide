@@ -70,7 +70,25 @@ if(sysVoltage < 10){ // <- Ugly!
 }
 ```
 
-.
+Most statements should use this style of bracket spacing _named K & R_, except for functions and class declarations.
+
+Functions and declarations should be like this:
+```
+public class HelloWorld
+{
+   public void exampleFunction()
+   {
+      System.out.println("Hello, World!");
+   }
+}
+```
+
+The reasoning for this is that functions benefit from the isolation of brackets being on a new line;
+it adds isolation between the function declaration and the code inside it.
+
+Classes benefit even more from doing this, because they house much more code than a function will.
+
+Doing this makes the code cleaner and quicker to scan.
 
 In Java or any C family language, you could do
 ```
