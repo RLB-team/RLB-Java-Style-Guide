@@ -1,4 +1,4 @@
 ## RLB-Java-Style-Guide
-Simple style guide for simple, clear, and readable code.
+Modern style guide for simple, clear, and readable Java 17+ code.
 
-Please visit `STYLE.md` to view the style guide.
+Visit `STYLE.md` to see it.
